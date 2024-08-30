@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: robot-app
+    ports:
+      - "8888:80"
+    container_name: robot_web_test2
+    depends_on:
+      - express-server
+
+  express-server:
+    build:
+      context: backend # Path to your Express app Dockerfile
+      dockerfile: Dockerfile
+    image: robot-backend
+    ports:
+      - "3000:3000"
